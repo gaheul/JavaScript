@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문 switch문</title>
+</head>
+<body>
+    <h2>제어문 switch문</h2>
+    <script>
+        'user strict';
+        let Menu = prompt("메뉴를 선택하세요!"); //피자 p, 스파게티 s, 리조또 r, 드링크 d
+
+        switch(Menu){//영어 대소문자 구분
+
+            case 'P':
+            case 'p':
+             document.write("Pizza를 주문하셨습니다.");
+             break;
+            
+            case'S':
+            case'S':
+            document.write("Spaghetti를 주문하셨습니다.");
+            break;
+
+            case'R':
+            case'r':
+            document.write("Risotto를 주문하셨습니다.");
+            break;
+
+            case'D':
+            case'd':
+            document.write("Drink를 주문하셨습니다.");
+            break;
+
+            default:document.write("메뉴에 없습니다.");
+
+        }
+
+    </script>
+</body>
+</html>

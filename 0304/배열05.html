@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <h2>배열05</h2>
+    <script>       
+        'user strict';      
+        let arr1 = ['김사과',20,160.5,true];
+        console.log(arr1);
+       
+        for(let i =0; i<arr1.length; i++){
+            console.log(arr1[i]);
+        }
+        console.log('-------------------------');
+        console.log('[배열의 인덱스 값을 출력하는 반복문]');
+        for(let i in arr1){
+            console.log(i,arr1[i]);
+        }
+
+        console.log('-------------------------');
+        console.log('[배열의 배열요소를 출력하는 반복문]');
+        for(let i of arr1){
+            console.log(i);
+        }
+
+        console.log('-------------------------');
+        //순환처리(모두 다 출력)
+        arr1.forEach(function(item,idx,arr){ //item : 배열요소 , idx:인덱스값 , arr:배열
+            console.log(item,idx,arr);
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>  
+        *{margin: 20px; padding: 0; border: 0;}
+
+        input{width:100px; height:50px;}
+        .box, .box01, .box02{width:150px; height: 150px;
+             border:3px solid #000;}
+          
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+         $(document).ready(function(){ //무조건 먼저 들어가야함
+        //    $('.box').hide(); // = display : none
+        //  $('.box').css({display:'none'}); //먼저 넣으면 화면띄웠을 때 안보임
+
+            // $('.btn_s').click(function(){
+            //     $('.box').show(1000); //보임 애니메이션 메소드
+            // });
+
+            // $('.btn_e').click(function(){
+            //     $('.box').hide(1000); //숨김 애니메이션 메소드
+            // });
+
+            // $('.toggle_b').click(function(){
+            //     $('.box01').toggle(600); //toggle:show ,hide의 기능 둘다 가능,하지만 현재보이는 상태라면 숨김/숨김 상태라면 보여짐
+            // });
+
+            // $('.btn_s').click(function(){
+            //     $('.box').slideUp(); //낙타표기법(두개의 단어이을 때 뒷단어의 첫글자 대문자)
+            // });
+            // $('.btn_e').click(function(){
+            //     $('.box').slideDown(); //slideup/down :객체 높이를 위에서 커졌다 작아졌다 동작(시간줄수있음)
+            // })
+            
+            $('.btn_s').click(function(){
+                $('.box').fadeIn(5000); //fadeIn: 서서히 나타남/투명도를 조절해서 동작함
+            });
+            $('.btn_e').click(function(){
+                $('.box').fadeOut(); //fadeOut: 서서히 사라짐 /투명도를 조절해서 동작함
+            });
+
+            $('.fadeto').click(function(){
+                $('.box02').fadeTo(600,0.2); //fadeTo(시간,투명도) :  투명도가 설정되었을 때 걸리는 시간
+            });
+
+            
+
+        })
+        /*
+        $(대상).css({속성1:속성값})
+        css()메소드는 대상에게 스타일 속성을 적용할 때 사용
+        $(대상).addClass(클래스명) : 미리 선언된 스타일 속성을 제이쿼리 메소드로 설정함
+        $(대상).removeClass(클래스명) : 미리 선언된 스타일 속성을 제이쿼리 메소드로 설정된 동작을 취소
+
+        애니메이션 메소드(시간) -> 1000 :1초(500->0.5초)
+        
+        */
+    </script>
+</head>
+<body>
+    <div id="control">
+        <input type ="button" value="show" class="btn_s"/>
+        <input type ="button" value="hide" class="btn_e"/>
+        <input type ="button" value="toggle" class="toggle_b"/>
+        <input type ="button" value="fadeTO" class="fadeto"/>
+    </div>
+    <div class="box">box</div>
+    <div class="box01">box01</div>
+    <div class="box02">box02</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세로메뉴</title>
+    <style>  
+        *{margin: 0; padding: 0; }
+        ul,li{list-style: none;}
+        a{text-decoration: none;}
+
+        .menu{margin: 50px; width:150px;}
+        .main_mn{}
+        .main_mn > li{ width:150px; margin-bottom: 2px;}
+        .main_mn > li > div{width:100%; background-color: #fff; color:#000; height: 25px;
+                          text-align: center; background-color: rgb(62,181,236); color:#fff;
+                          cursor: pointer;}       
+        .sub_mn{
+                border: 1px solid #ccc; box-sizing: border-box; width:100%; height: 100px;
+                border-top: none;
+                }
+        .sub_mn li{height:25px; border-bottom: 1px solid #ccc; box-sizing: border-box; }
+        .sub_mn li a{display: block; height: 25px; text-align: center;}
+        .sub_mn li:hover a{background-color: blueviolet; color:#fff}
+        
+
+
+        
+          
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){ 
+            $('.sub_mn').hide();
+            $('.main_mn > li').click(function(){
+                $('.sub_mn').each(function(){ //$(대상).each : 대상을 순서대로 명령어를 수행하는 것
+                    if($(this).css({display:'block'})){//$(this) -> each()문에 의해서 수행되는 대상을 의미
+                        $(this).hide(); //$(this) -> if()문에 의해서 수행되는 대상
+                    }
+                })             
+                // $(this).find('.sub_mn').show();
+                //$(this).find('.sub_mn').slideDown();
+                $(this).find('.sub_mn').fadeIn(1500);
+            });
+              
+        });
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <ul class="main_mn">
+            <li><div>mainmn</div>
+                <ul class="sub_mn">
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                </ul>
+            </li>
+            <li><div>mainmn</div>
+                <ul class="sub_mn">
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                </ul>
+            </li>
+            <li><div>mainmn</div>
+                <ul class="sub_mn">
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                </ul>
+            </li>
+            <li><div>mainmn</div>
+                <ul class="sub_mn">
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                </ul>
+            </li>
+            <li><div>mainmn</div>
+                <ul class="sub_mn">
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                    <li><a href="#">submenu</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

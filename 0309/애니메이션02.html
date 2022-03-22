@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>  
+        *{margin: 20px; padding: 0; border: 0;}
+
+        input{width:100px; height:50px;}
+        .box{width:150px; height: 150px;
+             border:3px solid #000;}
+          
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){ 
+            // $('.btn').click(function(){
+            //     $('.box').stop().delay(3000).css({width:'50px'}).animate({width:'500px'},2000);
+            // });//초기값(.css)과 css값이 같아야함
+
+            // $('.box').animate({width:'500px'},2000);
+            // $('.box').animate({width:'100px'},2000);
+            // $('.box').animate({width:'1000px'},2000);
+            // $('.box').animate({width:'200px'},2000);
+            // $('.box').animate({width:'700px'},2000);
+
+            $('.box').animate({width:'500px'},2000,function(){
+                $('.box').animate({width:'100px'},2000,function(){
+                    $('.box').animate({width:'1000px'},2000,function(){
+                        $('.box').animate({width:'200px'},2000,function(){
+                            $('.box').animate({width:'700px'},2000);
+                        });
+                    });
+                });               
+            }); //연결해서 실행 -> ,function(){ }
+            
+   
+            //animate()
+            //stop() : 현재 시점에서 이전에 실행명령을 다 취소
+            //css({시작할모양의 스타일시트 속성:속성값})
+            //delay(시간) : 필요에 따라서 대기시간 설정
+            //animate({스타일시트 속성: '속성값',속성2:'속성값2'},시간(1000));
+            //static :애니메이션 실행순서 상태
+        });
+    </script>
+</head>
+<body>
+    <div id="control">
+        <input type ="button" value="show" class="btn"/>
+       
+    </div>
+    <div class="box">box</div>
+    
+</body>
+</html>

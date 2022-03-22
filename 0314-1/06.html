@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 위치</title>
+    <script src="js/jquery.js"></script>
+    
+    <style>
+
+        * { margin:0; padding:0; }
+        #wrapper{width:2000px; height: 3000px; }
+        #wrapper > div{position: fixed;}
+       
+
+    </style>
+    <script> //헤드: 자동적으로  바디: 이벤트를 적용했을 때
+
+    $(document).ready(function(){
+    //   $(window).scroll(function(){})
+         $(window).on('scroll',function(){ //on(): 한개의 대상에여러개의 이벤트-이벤트1: function(){} , 이벤트2: function(){} 
+            var sl = $(window).scrollLeft();
+            var st = $(window).scrollTop();
+
+            $('#wrapper > div#info').children('#scrollLeft').text(sl); 
+            $('#wrapper > div#info').children('#scrollTop').text(st);
+         
+            $('.btn').click(function(){
+                $(window).scrollLeft(parseInt($('.xscroll').val()));
+                $(window).scrollTop(parseInt($('.yscroll').val()));
+            });
+        })
+
+    });
+
+</script>
+
+    
+</head>
+<body>
+    <div id="wrapper">
+        <div id="info">
+        <span>scrollLeft= </span><span id="scrollLeft">0</span><br>
+        <span>scrollTop= </span><span id="scrollTop">0</span><br>
+         </div>
+         <div id="form" style="margin-top: 60px;">
+             <span>이동시킬 스크롤의 위치값을 입력해 주세요.</span><br>
+             <input type ="text" class="xscroll">
+             <input type ="text" class="yscroll">
+             <input type="button" class="btn" value="입력">
+
+         </div>
+    </div>
+
+    
+
+    
+   
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인덱스값&요소의번째</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        .menu > li {cursor: pointer;}
+        .menu > li:hover{color: brown;}
+        div{border: 3px solid #000;
+            margin: 10px; padding: 10px;}
+    </style>
+</head>
+<body>
+    <!-- eq(몇번째): 형제요소중에서 몇번째,index(몇번) : 형제요소 중에서 몇번에 해당하는지 일련번호 추출 / 두개 메소드는 0부터 시작-->
+
+    <ul class="menu">
+        <li>menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+        <li>menu4</li>
+        <li>menu5</li>
+    </ul>
+
+    <div>box0</div>
+    <div>box1</div>
+    <div>box2</div>
+    <div>box3</div>
+    <div>box4</div>
+
+    <script>
+        $(document).ready(function(){
+            $('.menu > li').click(function(){//$(this)는 $('.menu > li')중에서 마우스 이벤트 적용된 객체
+               var i = $(this).index(); 
+
+               $('div').css({height:'0px'}); //마우스 이벤트가 적용되었을 때 높이가 0으로 처리
+               $('div').eq(i).css({height:'50px'});// 선택된 버튼의 번호값을 갖고와서 해당되는 div에 스타일 적용
+
+                console.log(`현재 선택된 버튼의 번호: ${i}`);
+            })
+        });
+    </script>
+</body>
+</html>

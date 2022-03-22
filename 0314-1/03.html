@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each에 의한 객체선택</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        .menu > li {cursor: pointer;}
+        .menu > li:hover{color: brown;}
+        div{border: 3px solid #000;
+            margin: 10px; padding: 10px;}
+    </style>
+</head>
+<body>
+    <!-- next() : 선택된 객체의 형제요소중 다음에 있는 객체-->
+    <!-- find() : 선택된 객체의 안에 있는 요소-->
+    <!-- parent() : 선택된 객체의 부모요소를 의미-->
+    <!-- parents() : 선택된 객체의 부모요소의 형제들도 포함-->
+
+    <ul class="menu">
+        <li>menu1</li>
+        <li><p>menu2</p></li>
+        <li>menu3</li>
+        <li>menu4</li>
+        <li>menu5</li>
+    </ul>
+
+    <script>
+        $(document).ready(function(){
+        //    $('.menu > li').eq(2).css({color:'red'});
+        //    $('.menu > li').eq(2).next().css({color: 'blue'}); //2번째 다음요소
+        // $('.menu > li').eq(2).nextAll().css({color: 'blue'}); //2번째 요소 다음 전부
+
+        // $('.menu > li').eq(1).find('p').css({color:'green'});
+
+         //$('.menu > li').eq(1).find('p').parent().parent().css({color:'red'}); //p태그의 부모 -> li ,li 의 부모
+         $('.menu > li').eq(1).find('p').parents().css({color:'red'}); //parents : 자기 자신의 부모,형제 모두 
+
+        });
+    </script>
+
+   
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>갤러리만들기</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        *{margin: 0; padding: 0;}
+        a{text-decoration: none;}
+        ul,li{list-style: none;}
+
+        #all{width:100%; height: 400px; border: 1px solid #000; box-sizing: border-box; position: relative;}
+
+        /* 이미지 리스트 */
+        .main_list{width: 100%; height: 400px; overflow: hidden; /*값이(500,300) 벗어나면 숨김*/
+                       background-color: bisque; position: relative;} /*position -기준*/
+        .main_list ul{position: relative; width:100%; height: 400px;}/*기준잡아서 애니메이션을 하기위한 position*/
+        .main_list ul li{position: absolute; top:0;  width:100%; height: 400px; 
+                            font-size: 20px; color: #fff; text-align: center; line-height: 400px;} /*li를 옆으로 배치하기 위한 position*/
+        .main_list ul li:nth-child(1){left:0; background-color: cornflowerblue;}
+        .main_list ul li:nth-child(2){left:100%; background-color: coral;}
+        .main_list ul li:nth-child(3){left:200%; background-color: darkgrey;}
+        .main_list ul li:nth-child(4){left:300%; background-color: green;}
+
+        /* 메뉴(버튼) */
+        .btns{position: absolute; top:410px; left:50%; z-index: 9999; margin-left: -87.5px;/*li:25px*4=100 + margin:25*3 /2*/ } 
+        .btns li{width:25px; height: 25px; float: left;
+               margin-right: 25px; background-color: blueviolet; cursor: pointer;}
+        .btns li:hover{background-color: rgb(179, 13, 170);}
+        .btns li.on{background-color: coral;} /*li중에서 on클래스가 적용된 대상*/
+        .s_btns{float:left; margin-top: 17px;}
+        .s_btns > li{float: left; margin-right: 10px; cursor: pointer;}
+
+    </style>
+</head>
+<body>
+    
+    <div id="all">
+        <!-- 이미지 리스트 -->
+        <div class="main_list">
+            <ul>
+                <li>이미지0</li>
+                <li>이미지1</li>
+                <li>이미지2</li>
+                <li>이미지3</li>
+            </ul>
+        </div>
+        <ul class="s_btns">
+            <li class="l_btn">왼쪽</li><li class="r_btn">오른쪽</li>
+        </ul>
+        <!-- 버튼 -->
+        <ul class="btns">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </div>
+
+    <script>
+        $(function(){ //$(document).ready(function(){}) 같음
+           var visual =$('.main_list > ul >li');
+           var button = $('.btns >li');
+           var current =0;
+           var setIntervalId;
+
+           button.click(function(){
+             var tg=  $(this);
+             var i= tg.index();
+
+             button.removeClass('on');
+             tg.addClass('on');
+
+             move(i);
+           });
+
+           $('#all').on({
+               mouseover:function(){
+                   clearInterval(setIntervalId);
+               },
+               mouseout:function(){
+                   timer();
+               }
+           })
+
+           timer();
+           function timer(){
+               setIntervalId = setInterval(function(){
+                   var n= current +1;
+                   if(n==4){
+                       n=0;
+                   }
+               move(n)},5000);
+           }
+
+           function move(i){
+               var currentEl= visual.eq(current);
+               var nextEl = visual.eq(i);
+
+               currentEl.css({left:0}).stop().animate({left:'-100%'});
+               nextEl.css({left:'100%'}).stop().animate({left:0});
+
+               current=i;
+           }
+
+
+
+         
+        });
+        
+        
+    </script>
+
+</body>
+</html>

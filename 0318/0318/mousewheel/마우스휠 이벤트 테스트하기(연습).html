@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        #wrap{width:100%;}
+        #wrap > div{width:100%; height: 100vh;}
+        #wrap > div.con1{background-color: bisque;}
+        #wrap > div.con2{background-color: cornflowerblue;}
+        #wrap > div.con3{background-color: rgb(40, 180, 190);}
+        #wrap > div.con4{background-color: rgb(99, 58, 194);}
+        #wrap > div.con5{background-color: rgb(247, 194, 81);}
+
+    </style>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="con1">con1</div>
+        <div class="con2">con2</div>
+        <div class="con3">con3</div>
+        <div class="con4">con4</div>
+        <div class="con5">con5</div>
+    </div>
+    <script>
+       $(document).ready(function () {
+
+        var ht = $(window).height();
+        $('#wrap > div').height(ht);
+
+        $(window).on('resize', function () {
+            var ht = $(window).height();
+            $('#wrap > div').height(ht);
+        });
+
+
+        $('#wrap > div').on('mousewheel', function (event, delta) {
+            if (delta > 0) {
+                var prev = $(this).prev().offset().top;
+                $('html, body').stop().animate({ 'scrollTop': prev }, 1000, 'easeOutExpo');
+            } else if (delta < 0) {
+                var next = $(this).next().offset().top;
+                $('html, body').stop().animate({ 'scrollTop': next }, 1000, 'easeOutExpo');
+            }
+        });
+
+});
+    </script>
+</body>
+</html>

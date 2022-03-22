@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html및 텍스트를 읽고 설정하기</title>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.main').append('<li>5추가</li>'); //li 앞뒤로 추가
+            $('.main').prepend('<li>0추가</li>');
+            $('.main').before('<div class="first">main앞부분추가</div>'); //ul(부모) 앞뒤로추가
+            $('.main').after('<div>main뒷부분추가</div>');
+            var cloneEl = $('.list01').clone(); 
+            $('.first').append(cloneEl);
+            
+        })
+    </script>
+</head>
+<body>
+    
+        <ul class="main">
+            <!-- <li>0</li> -->
+            <li class="list01">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <!-- <li>5</li> -->
+        </ul>
+   
+    
+</body>
+</html>

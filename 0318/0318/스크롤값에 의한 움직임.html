@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul,li{list-style: none;}
+        a{text-decoration: none;}
+
+        #wrap{width:100%;}
+        #wrap > div{width:100%; height: 1000px; position: relative;}
+        .con01{background-color: coral;}
+        .con02{background-color: rgb(223, 150, 67);}
+        .con03{background-color: rgb(81, 53, 158);}
+        .con04{background-color: rgb(112, 66, 136);}
+
+        .box{width:100px; height: 100px; border: 2px solid #000;}
+        .box1-1{position: absolute; top:200px; left:500px;}
+        .box1-2{position: absolute; top:500px; left:100px;}
+        .box1-3{position: absolute; top:700px; left:1200px;}
+
+        .box2-1{position: absolute; top:200px; left:500px;}
+        .box2-2{position: absolute; top:500px; left:100px;}
+        .box2-3{position: absolute; top:700px; left:1200px;}
+
+        .box3-1{position: absolute; top:200px; left:500px;}
+        .box3-2{position: absolute; top:500px; left:100px;}
+        .box3-3{position: absolute; top:700px; left:1200px;}
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+       <div class="con01">
+           <div class="box1-1 box">box1-1</div>
+           <div class="box1-2 box">box1-2</div>
+           <div class="box1-3 box">box1-3</div>
+       </div>
+       <div class="con02">
+            <div class="box2-1 box">box2-1</div>
+            <div class="box2-2 box">box2-2</div>
+            <div class="box2-3 box">box2-3</div>
+       </div>
+       <div class="con03">
+            <div class="box3-1 box">box3-1</div>
+            <div class="box3-2 box">box3-2</div>
+            <div class="box3-3 box">box3-3</div>
+       </div>
+       <div class="con04"></div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var scene01Num = 1;
+            var scene02Num = 1;
+            var scene03Num = 1;
+            //스크롤은 한쪽방향으로 이벤트 적용이 되어서 한번실행 되돌아 애니메이션 적용안됨
+            //scene01Num =1; 일때는 스크롤이 내려가는 상태로 정의
+            //scene01Num =0; 일때는 스크롤이 올라가는 상태로 정의
+
+            $(window).scroll(function(){
+                var scrollTop = $(document).scrollTop();
+                if(scrollTop >200 && scene01Num == 1){
+                    scene01Num=0;
+                    $('.box1-1').delay(0).stop().animate({opacity: 1, top:"800px"
+                },1000,function(){
+                    $('.box1-1').delay(200).stop().animate({opacity:0},1000);
+                });
+
+                    $('.box1-2').delay(400).stop().animate({opacity:1, top:'800px'
+                },1000, function(){
+                    $('box1-2').delay(200).stop().animate({opacity:0},1000);
+                });
+
+                    $('.box1-3').delay(800).stop().animate({opacity:1, top:"800px"
+                },1000,function(){
+                    $('box1-3').delay(200).stop().animate({opacity:0},1000);
+                })
+                }else if(scrollTop <200 && scene01Num == 0){
+                    scene01Num=1;
+                    $('.box1-1').delay(0).css({top:"800px"}).stop().animate({opacity:1, top:"200px"},1000);
+                    $('.box1-2').delay(400).css({top:"800px"}).stop().animate({opacity:1, top:"500px"},1000);
+                    $('.box1-3').delay(800).css({top:"800px"}).stop().animate({opacity:1, top:"700px"},1000);
+                }
+
+                if(scrollTop>1200 && scene02Num==1){
+                    scene02Num=0;
+                    //박스 애니메이션 설정
+                    $('.box2-1').delay(0).stop().animate({top:"500px", opacity:1},
+                    1000,function(){
+                        $('.box2-1').delay(200).stop().animate({opacity:1},1000);
+                    });
+
+                    $('.box2-2').delay(500).stop().animate({top:"800px", opacity:1},
+                    1000,function(){
+                        $('.box2-2').delay(200).stop().animate({opacity:0},1000);
+                    });
+
+                    $('.box2-3').delay(600).stop().animate({top:"300px", opacity:1},
+                    1000,function(){
+                        $('.box2-3').delay(300).stop().animate({opacity:1},1000);
+                    });
+                    
+                }else if(scrollTop <1200 && scene02Num==0){
+                    scene02Num=1;
+                    $('.box2-1').delay(200).css({top:"500px"}).stop().animate({opacity:1, top:"200px"},1000);
+                    $('.box2-2').delay(400).css({top:"800px"}).stop().animate({opacity:1, top:"500px"},1000);
+                    $('.box2-3').delay(700).css({top:"300px"}).stop().animate({opacity:1, top:"100px"},1000);
+                }
+
+            });
+
+
+        });
+    </script>
+   
+</body>
+</html>

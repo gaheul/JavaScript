@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    
+    <style>
+        *{margin: 0; padding: 0;}
+        ul,li{list-style: none;}
+        a{text-decoration: none;}
+
+        #wrap{width:100%;}
+        #header{width:100%; height:120px; background-color: blanchedalmond; position: fixed; top:0; left: 0;
+                 display: flex; justify-content: center; align-items: center;}
+        #header ul{width:800px; height: 30px;}
+        #header ul li{width:200px; height: 30px; float: left;}
+        #header ul li a{font-size: 30px;}
+        #header ul li.on a{color: #ffff;}
+      
+        #contents{width:100%;}
+        #contents div{padding-top: 120px;}
+        #paper{width:100%; height: 1000px; background-color: aquamarine;}
+        #works{width:100%; height: 1000px; background-color: rgb(70, 40, 124);}
+        #email{width:100%; height: 1000px; background-color: rgb(53, 172, 43);}
+        #gallery{width:100%; height: 1000px; background-color: rgb(117, 33, 44);}
+
+        .q_mn{width:80px; height: 250px; border: 1px solid #000; position: absolute; right:10px; top:200px; z-index: 9999;}
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <ul>
+                <li><a href="#">paper</a></li>
+                <li><a href="#">works</a></li>
+                <li><a href="#">email</a></li>
+                <li><a href="#">gallery</a></li>
+            </ul>
+        </div>
+
+        <div id="contents">
+            <div id="paper">paper</div>
+            <div id="works">works</div>
+            <div id="email">email</div>
+            <div id="gallery">gallery</div>
+        </div>
+
+        <div class="q_mn">
+            <ul class="mn">
+                <li><a href="#">paper</a></li>
+                <li><a href="#">works</a></li>
+                <li><a href="#">email</a></li>
+                <li><a href="#">gallery</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+          var menu = $('#header > ul >li');
+          var contents = $('#contents > div');
+
+            menu.click(function(){
+                var tg = $(this);
+                var i = tg.index();
+                var section = contents.eq(i);
+                var tt=section.offset().top;
+
+                $('html,body').stop().animate({scrollTop:tt});
+            });
+
+            $(window).scroll(function(){
+                var sct = $(window).scrollTop();
+                $('.q_mn').stop().animate({top:(sct+200)+"px"},500);
+            
+
+            contents.each(function(){
+                var tg=$(this);
+                var i = tg.index();
+                if(tg.offset().top <=sct ){
+                    menu.removeClass('on');
+                    menu.eq(i).addClass('on');
+                }
+
+            });
+            });
+
+            });
+        
+    </script>
+   
+</body>
+</html>

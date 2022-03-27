@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        body{margin: 20px auto; padding: 0;
+             width:620px; background: #192839;}
+
+        .thumbs{float:left; width:100px;}
+        .thumbs img{margin-bottom: 3px; padding: 5px; border: 1px solid #ccc;}
+        .thumbs img:hover{border-color: #ef4018;}
+         #largeImg{margin-left: 110px; padding: 5px; width: 500px; height: 280px; 
+                   border: 1px solid #ccc;}
+    </style>
+</head>
+<body>
+    <div class="thumbs">
+        <a href="images/pic1.jpg" title = "image1"><img src="images/th_pic1.jpg"></a>
+        <em>Lorem Ipsum is simply dummy text of the pdrinting and typesetting industry.</em>
+
+        <a href="images/pic2.jpg" title = "image1"><img src="images/th_pic2.jpg"></a>
+        <em>Lorem Ipsum is simply dummy tely dummy thely dummy tegxt of thely try. Sed facilisis, sem a luctus bibendum, dui risus pellentesque velit, quis tempor magna sem vel justo. Etiam eget ipsum ante.</em>
+        
+        <a href="images/pic3.jpg" title = "image1"><img src="images/th_pic3.jpg"></a>
+        <em>Lorem Ipsum is simply dummy.</em>
+    </div>
+    <div id="largeImg"><img src="images/pic1.jpg" alt="image1"></div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a href="" style="color:#fff;">menu</a>
+
+    <script>
+        
+        $('.thumbs > a').click(function(e){
+            e.preventDefault(); // a태그의 하이퍼링크(href)의 이벤트 초기화 -> a태그 이미지 경로가 있기때문에 이미지보기(링크)가 되기때문
+
+            //attr(): 현재 지정된 대상 속성값을 읽거나 수정하는 메소드
+            var path=$(this).attr('href'); //a태그를 눌렀을 때 href 속성값을 들고옴
+            
+            if(path != $('#largeImg Img').attr("src")){
+            $('#largeImg img').attr({src:path}); 
+            $('#largeImg img').css({opacity:0}).stop().animate({opacity:1},1000);
+            }
+        });
+    </script>
+</body>
+</html>

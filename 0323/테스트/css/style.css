@@ -1,0 +1,40 @@
+#wrap{width: 100%;}
+#header{width:1200px; height: 100px; margin: 0 auto;
+        background-color: aquamarine; }
+#header .logo{width:200px; height: 100px; float: left; 
+              background-color: rgb(55, 209, 80);}
+#header .menu{width:1000px; height: 100px; float: right; 
+                background-color: blueviolet;}
+#header .main_mn{float: right; width:500px; height: 50px;
+                border: 1px solid #000; box-sizing: border-box;
+                margin:30px 40px 0 0;}
+#header .main_mn > li{float: left; position: relative;    
+                    width:120px; height: 50px; line-height: 50px;     
+                    border-right: 1px solid #000; box-sizing: border-box;}
+#header .main_mn > li:last-child{border-right: 0;}
+#header .main_mn > li > a{font-size: 20px; color: #000; display: block;
+                        text-align: center; text-align: center;}
+#header .sub_mn{position: absolute; top:48px; left:0;
+                width:100%; border: 1px solid #000; border-top: none;}
+#header .sub_mn > li{height: 35px; }
+#header .sub_mn > li > a{display: block; text-align: center;
+                        height: 40px; }
+
+#main{width:1200px; height: 300px; margin: 0 auto; 
+      background-color: rgb(228, 140, 32);}
+#contents{width:1200px; height: 200px; margin: 0 auto; 
+          background-color: blueviolet; }
+#contents_in{display: flex; }
+#contents_in .notice{width:400px; height: 200px; 
+                background-color: aquamarine;}
+#contents_in .banner{width:400px; height: 200px; 
+                 background-color: rgb(7, 88, 61);}
+#contents_in .go{width:400px; height: 200px; 
+                    background-color: rgb(34, 156, 65);}
+
+#footer{width: 1200px; height: 100px; margin: 0 auto;
+        background-color: coral; 
+        display: flex;}
+#footer .f_logo{width:200px; height: 100px; background-color: bisque;}
+#footer .copy{width: 800px; height: 100px; background-color: rgb(75, 134, 134);}
+#footer .sns{width:200px; height: 100px; background-color: cadetblue;}

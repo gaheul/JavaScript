@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터타입 - 객체형</title>
+</head>
+<body>
+    <h2>데이터타입 - 객체형</h2>
+    <p>여러 속성을 하나의 변수에 저장할 수 있도록 해주는 데이터 타입
+        -> key / value pair 구조
+
+        let student = {"name":"김사과", "age" : 20};
+                       ------  ------   -----  ----
+                        key     value    kye    value
+    </p>
+    <script>
+        'use strict'; //자바스크립트 엄격형 선언(대소문자 구분)
+         const dog = {'name':'루시','age':10,'weight':2.5};
+         console.log(dog); //전체호출
+         console.log(`이름 : ${dog.name}`); //이름만 호출
+         console.log(`나이: ${dog.age}`); //나이만 호출
+         console.log(`몸무게: ${dog.weight}`); //몸무게만 호출
+
+         console.log(dog["name"]);
+         console.log(dog["age"]);
+         console.log(dog["weight"]);
+
+         //특정 속성값을 수정
+        dog.weight =3;
+        console.log(`몸무게 : ${dog.weight}`);
+
+        //dog = {'name' : '뽀미', 'age': 5, 'weight':6}; 
+        //const는 새로운 객체를 참조할 수 없음
+        console.log(dog);
+
+        console.log('-------------------------------')
+        let arr =[10,20,30,40,50];
+        for(let i in arr){
+            console.log(i); //인덱스번호
+            console.log(arr[i]);  //속성값
+        }
+        
+    </script>
+</body>
+</html>

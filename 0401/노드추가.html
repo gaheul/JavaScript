@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드추가</title>
+</head>
+<body>
+    <h2>노드추가</h2>
+    <p id="item1">JavaScript</p>
+    <p id="item2">PHP</p>
+    <hr/>
+    <div id="list">                                                           
+        <p id="js">node.js</p>
+        <p>react</p>
+    </div>
+    <hr/>
+    <p id="text">지금 시간은 오전 10시 30분입니다.</p>
+
+    <button onclick="appendNode()">노드 추가</button>
+    <button onclick="insertNode()">노드 추가2</button>
+    <button onclick="appendText()">텍스트 추가</button>
+
+    <script>
+        'use strict';
+        const appendNode = function(){
+            const parent = document.getElementById('list');
+            const newItem = document.getElementById('item1');
+            parent.appendChild(newItem);//선택된 대상의 자식요소의 마지막 부분에 입력
+        }
+
+        const insertNode = function(){
+            const parent = document.getElementById('list');
+            const js = document.getElementById('js');
+            const newItem = document.getElementById('item2');
+            parent.insertBefore(newItem, js); //들어가고자하는 자식의 요소 하나 지정 
+            //js라는 요소를 지정하지 않으면 안에 자식요소가 없다고 생각하고 appendChild처럼 마지막에 들어가거나 브라우저에 따라 이상이 발생할 수 있음
+            //insertBefore 자식요소중에 맨 처음에 입력
+        }
+
+        const appendText = function(){
+            const text = document.getElementById('text').firstChild;
+            console.log(text);
+            text.insertData(7,"아주 외로운"); //insertData(시작위치,"추가할 문자열")
+        }
+
+    </script>
+</body>
+</html>

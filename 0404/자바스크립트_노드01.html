@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_노드</title>
+</head>
+<body>
+    <div class="container">
+        <ul id="tutorial">
+            <li class="html">HTML</li>
+            <li class="css">CSS</li>
+            <li class="css3">CSS3</li>
+            <li class="javascript">JavaScript</li>
+            <li class="jquery">jQuery</li>
+            <li class="blank"></li>
+        </ul>
+        <p id="portfolio">portfolio</p>
+    </div>
+
+    <script>
+        'use strict';
+        //id로 접근 ->element object
+        // var tutorial = document.getElementById('tutorial');
+        // tutorial.style.backgroundColor='#666';
+
+        //tag 이름으로 접근 ->NodeList object
+        //   const li = document.getElementsByTagName('li');
+        //   console.log(li); 배열
+        //   console.log(li[1]); //배열 1번 항목
+        //   console.log(li.item(1)); //1번 항목
+        //   console.log("li.length :" + li.length);
+        //   for(var i =0; i < li.length; i++){
+        //     li[i].style.backgroundColor = '#666';
+        //   }
+
+        //class 이름으로 접근 -> NodeList object
+        // const html = document.getElementsByClassName('html');
+        // console.log(html); //배열
+        // console.log(html[0]);
+        // console.log(html.item(0));
+        // html[0].style.backgroundColor ='#666';
+
+        //css기법으로 첫번째 노드 선택 -> Node object
+    //    const li = document.querySelector('#tutorial > li'); 
+    //    li.style.backgroundColor = '#666' ;
+
+        //css기법으로 전체 노드 선택 -> NodeList object
+        // const li = document.querySelectorAll('#tutorial > li');
+        //  for(var i=0; i<li.length ; i++){
+        //      li[i].style.backgroundColor ='#666';
+        //  }
+
+        //getElementByTagName을 더 선호
+        const li = document.getElementsByTagName('li');
+        for(var i=0; i<li.length; i++){
+            if(li[i].textContent == 'HTML' || li[i].textContent =='CSS'){//textcontent : 텍스트 내용(대소문자 구분)
+                li[i].style.backgroundColor ='#666';
+            }
+        }
+    </script>
+</body>
+</html>

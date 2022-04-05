@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드삭제</title>
+</head>
+<body>
+    <h2>노드삭제</h2>
+    <div id="list">
+        <p>HTML</p>
+        <P id="item">CSS</P>
+        <P id="js" style="background-color: deeppink; color: white;">JavaScript</P>
+    </div>
+    <button onclick="removeNode()">요소 노드 삭제</button> <!--태그삭제-->
+    <button onclick="removeAttr()">속성 노드 삭제</button> <!--속성삭제-->
+
+    <script>
+        'use strict';
+        const removeNode = function(){
+            const parent = document.getElementById('list');
+            const removeItem = document.getElementById('item');
+            const result = parent.removeChild(removeItem); //부모요소에서 찾아서 삭제
+            console.log(result);
+        }
+
+        const removeAttr = function(){
+            const js = document.getElementById('js');
+            js.removeAttribute('style');
+        }
+    </script>
+</body>
+</html>

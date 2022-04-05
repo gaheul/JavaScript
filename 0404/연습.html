@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_ui</title>
+    <style>
+        .container{
+            margin-top: 35px;
+        }
+        .ball{
+            width:30px;
+            height: 30px;
+            background-color: #8ac007;
+            border-radius: 50%;
+            position: absolute;
+            left:40px;
+            top:184px;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+       <button id="queue">animate queue</button>
+       <div class="ball"></div>
+   </div>
+    <script>
+        'use strict';
+        window.addEventListener('load',function(){
+            const queue =document.querySelector('#queue');
+            const ball = document.querySelector('.ball');
+            let x =  ball.offsetLeft;
+            let targetx =400;
+            queue.addEventListener('click',function(){
+                animate1(ball,x,targetx);
+            });
+
+            function animate1(target,startx,targetx){
+               var timer = setInterval(function(){
+
+                    if(startx < targetx){
+                        startx+=10;
+                    }else{
+                        startx = targetx;
+                        clearInterval(timer);
+                    }
+                    target.style.left = startx +"px";
+                },10)
+            }
+        });
+        
+    </script>
+</body>
+</html>

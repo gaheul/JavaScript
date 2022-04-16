@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크기,투명도,리셋</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        a{text-decoration: none;}
+        .contaier{
+            margin-top: 35px;
+            height: 500px;
+        }
+
+        .box{
+            width: 50px;
+            height: 50px;
+            background-color: #8ac007; 
+        }
+
+        .button_group{margin-top: 50px;}
+
+        .button_group a{
+            display: inline-block;
+            margin-right: 10x;
+            padding: 5px 20px;
+            font-size: 0.875rem;
+            background-color: #666;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load',function(){
+            var box = document.getElementById('box1');
+            box.style.opacity=1;
+
+            var btn1 = document.getElementById('size_big');
+            var btn2 = document.getElementById('opacity');
+            var btn3 = document.getElementById('reset');
+
+            var currentW =50;
+            var targetW=400;
+            var op=1;
+
+            btn1.addEventListener('click',function(e){
+                e.preventDefault();
+
+                var timer= setInterval(function(){
+                    if((targetW - currentW) >10){ //최대치 제어
+                        //400-50>350
+                        //400-60>340
+                        //400 -70> 330
+                        //400 - 390>10
+                        currentW  +=10; //50~390(50,60,70...390)
+                    }else{
+                        currentW = targetW//400
+                        clearInterval(timer);
+                    }
+                    box.style.width = currentW +"px"; //60 70
+                    box.style.height = currentW +"px"; //60 70
+                },10)//0.01초
+            });
+
+            btn2.addEventListener('click',function(e){
+                e.preventDefault();
+
+                var timer = setInterval(function(){ //한방향
+                    if(op > 0.1){
+                         op -= 0.1;
+                    }else{
+                         op=0;
+                         clearInterval(timer)
+                    }
+                    box.style.opacity = op;
+                },10)
+            });
+
+            reset.addEventListener('click',function(e){
+                e.preventDefault();
+                box.removeAttribute('style') //스타일(box.style) 삭제
+                currentW=50;
+                op=1;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box1" ></div>
+        <div class="button_group">
+            <a href="" id="size_big">size_big</a>
+            <a href="" id="opacity">opacity</a>
+            <a href="" id="reset">reset</a>
+        </div>
+    </div>
+</body>
+</html>

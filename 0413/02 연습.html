@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        a{text-decoration: none;}
+        .container{
+            margin-top: 50px;
+            height: 500px;
+        }
+        .ball{
+            width: 50px;
+            height: 50px;
+            background-color: #8ac007;
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            var num =0; //위치이동
+            var currentx=0; //현재 위치
+            var targetx=0; //목표위치
+            var moving = false;
+            const body = document.body;
+            const ball=document.getElementById('ball');
+
+            body.addEventListener('wheel',function(e){
+                if(moving) return;
+
+                var delta= e.wheelDeltaY
+
+                if(delta>0){
+                    console.log("up");
+                    if(num>0){
+                        num -=1;
+                    }
+                }else{
+                    console.log("down");
+                    if(num<20){
+                        num+=1;
+                    }
+                }
+
+                moving = true;
+                targetx=num*100;
+                
+                var aniTimer = setInterval(function(){
+                    if(targetx>currentx){
+                        if(Math.abs(targetx-currentx)>5){
+                            currentx+=5;
+                        }else{
+                            targetx=currentx;
+                            clearInterval(aniTimer);
+                            moving=false;
+                        }
+                    }else{
+                        if(Math.abs(targetx-currentx)>5){
+                            currentx-=5;
+                        }else{
+                            currentx=targetx;
+                            clearInterval(aniTimer);
+                            moving=false;
+                        }
+                    
+
+                    }
+                    ball.style.marginLeft = currentx+'px';
+                },5)
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="ball" id="ball"></div> <!--class:css / id:객체(class는 for문 돌려야하기때문/id는 객체1개)-->
+    </div>
+</body>
+</html>

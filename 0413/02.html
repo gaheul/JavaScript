@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        a{text-decoration: none;}
+        .container{
+            margin-top: 50px;
+            height: 500px;
+        }
+        .ball{
+            width: 50px;
+            height: 50px;
+            background-color: #8ac007;
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            var num =0; //위치 이동에 관련된 변수
+            var currentx=0; // 현재 위치에 관련된 변수
+            var targetx=0; // 목표 위치에 관련된 변수
+            var moving = false; // 현재 움직임에 관련된 변수
+            const body = document.body;
+            const ball = document.getElementById('ball');
+
+            body.addEventListener('wheel',function(e){
+                //console.log("mousewheel event!!");
+
+                if(moving) return;
+
+                var delta = e.wheelDeltaY; //wheelDeltaY ->wheel이벤트의 y(세로)값
+               // console.log("delta: "+delta);
+
+               if(delta>0){
+                console.log("up");
+                    if(num>0){ //num=0 ,최초로 up만하면 계속 0
+                        num-=1;
+                    }
+               }else {
+                console.log("down");
+                if(num<20){//num=0
+                    num+=1;
+                }
+
+               }
+
+               moving = true;
+               targetx = 100*num; //down -> num = 1 2 3 4 5 6 7 8
+               console.log("num : " + num+", currentx: "+currentx+", targetx: "+targetx)
+               //현재 num=2라고 가정했을 때 targetx=200
+               var aniTimer = setInterval(function(){
+                   if(targetx>currentx){//200>0
+                    if(Math.abs(targetx-currentx)> 5){//abs : -1,-5(값)이 들어오면 기호 무시하고 숫자(절대값)만 /100 200 300 400 500
+                        currentx+=5;// 5 10 15 20 25
+                   }else{
+                        currentx = targetx;
+                        clearInterval(aniTimer);
+                        moving=false;
+                   }
+               }else{
+                   if(Math.abs(targetx-currentx)> 5){
+                        currentx-=5;
+                   }else{
+                        currentx = targetx;
+                        clearInterval(aniTimer);
+                        moving=false;
+                   }
+               }
+                   ball.style.marginLeft = currentx + "px";
+               },5)//0.05s(5/1000)
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="ball" id="ball"></div> <!--class:css / id:객체(class는 for문 돌려야하기때문/id는 객체1개)-->
+    </div>
+</body>
+</html>
